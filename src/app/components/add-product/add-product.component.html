@@ -1,0 +1,42 @@
+<div class="cont_lista">
+
+    <div class="header">
+        <h1> {{ title }} Producto </h1>
+    </div>
+    
+    <form [formGroup]="form" (ngSubmit)="enviar()" class="container cont_agregar"  >
+        
+        <mat-card appearance="outlined" >
+        
+            <mat-form-field class="example-full-width">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="name"  matInput placeholder="Ex. Sabritas">
+            </mat-form-field>
+        
+        
+            <mat-form-field class="example-full-width">
+                <mat-label>Descripcion</mat-label>
+                <input formControlName="description"  matInput placeholder="Ex. Sabritas">
+            </mat-form-field>
+        
+        
+            <mat-form-field class="example-full-width">
+                <mat-label>Precio</mat-label>
+                <input type="number" formControlName="price"  matInput placeholder="Ex. Sabritas">
+            </mat-form-field>
+        
+        
+            <mat-form-field class="example-full-width">
+                <mat-label>Stock</mat-label>
+                <input type="number" formControlName="stock"  matInput placeholder="Ex. Sabritas">
+            </mat-form-field>
+        
+        </mat-card>
+    
+    
+        <button mat-stroked-button  >Enviar</button>
+        
+    </form>    
+</div>
+
+

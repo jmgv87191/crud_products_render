@@ -1,0 +1,43 @@
+.header{
+    background-color: #3ba9e8;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    h1{
+        color: white;
+    }
+}
+
+.cont_agregar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+mat-card{
+    width: 80%;
+    padding: 50px;
+}
+
+button{
+    width: 30%;
+}
+
+
+@media (max-width: 770px) {
+
+    mat-card{
+        width: 100%;
+        padding: 20px;
+    }
+
+    button{
+        width: 100%;
+    }
+}

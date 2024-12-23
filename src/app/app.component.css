@@ -1,0 +1,77 @@
+.cont_aside{
+    background-color: rgb(157, 235, 255);
+    height: calc(90% );
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items:  center;
+    padding-top: 50px;
+}
+
+.header{
+    background-color: rgb(133, 206, 235);
+    color: rgb(68, 68, 68);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    font-size: 20px;
+    font-weight: bolder;
+    letter-spacing: 5px;
+}
+
+.icon{
+    display: none;
+}
+
+.boton_bootswatch{
+    display: none;
+}
+
+
+@media (max-width: 1200px) {
+    mat-drawer{
+        width: 20%;
+        max-width: 100px;
+        min-width: 100px;
+    }
+    .header{
+        display: none;
+        background-color: red;
+
+    }
+
+    .btn_txt{
+        display: none;
+    }
+
+    .cont_aside{
+        height: 100vh;
+    }
+
+    .icon{
+        display: inherit;
+    }
+}
+
+@media (max-width: 770px) {
+
+    mat-drawer{
+        width: 5%;
+        max-width: 50px;
+        min-width: 50px;
+
+    }
+
+    .boton_bootswatch{
+        display: inherit;
+    }
+
+
+    .boton_material{
+        display: none;
+    }
+
+
+}
