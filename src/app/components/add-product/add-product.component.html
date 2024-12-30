@@ -70,6 +70,18 @@
                 <mat-label>Stock</mat-label>
                 <input type="number" formControlName="stock"  matInput placeholder="Ex. Sabritas">
             </mat-form-field>
+
+            @if ( form.controls['stock'].getError('required') && form.controls['stock'].touched ) {
+                <span class="error" >
+                    Debes ingresar el numero de productos
+                </span>
+            }
+
+            @if ( form.controls['stock'].getError('min') ) {
+                <span class="error" >
+                    El stock debe de ser mayor a 0
+                </span>
+            }
         
         </mat-card>
     

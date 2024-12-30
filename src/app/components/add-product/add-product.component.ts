@@ -34,8 +34,8 @@ export class AddProductComponent {
     this.form = this.fb.group({
       name: [ "", [Validators.required, Validators.minLength(3)] ],
       description:[  "", [Validators.required, Validators.minLength(3) ] ],
-      price:[  "", [Validators.required, Validators.min(0)] ],
-      stock:[  "", [Validators.required, Validators.min(0)] ],
+      price:[  "", [Validators.required, Validators.min(1)] ],
+      stock:[  "", [Validators.required, Validators.min(1)] ],
     })
     
     this.id =  Number(aRoute.snapshot.paramMap.get('id'))
