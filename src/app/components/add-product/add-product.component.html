@@ -2,91 +2,101 @@
 
     <div class="header">
         <h1> {{ title }} Producto </h1>
+
     </div>
     
     <form [formGroup]="form" (ngSubmit)="enviar()" class="container cont_agregar"  >
-        
-        <mat-card appearance="outlined" >
-        
-            <mat-form-field class="example-full-width">
-                <mat-label>Nombre</mat-label>
-                <input formControlName="name"  matInput placeholder="Ex. Sabritas">
-            </mat-form-field>
 
-            @if (  form.controls['name'].hasError('required') && form.controls['name'].touched  ) {
 
-                <span  class="error">
-                    Agregar un nombre
-                </span>
-            } 
+        @if (loader) {
+            <mat-spinner></mat-spinner>
+        }@else {
 
-            @if (  form.controls['name'].getError('minlength') && form.controls['name'].touched  ) {
-
-                <span  class="error">
-                    El nombre debe contener al menos 3 caracteres
-                </span>
-            } 
-
-        
-            <mat-form-field class="example-full-width">
-                <mat-label>Descripcion</mat-label>
-                <input formControlName="description"  matInput placeholder="Ex. Sabritas">
-            </mat-form-field>
-        
-            @if ( form.controls['description'].getError('required') && form.controls['description'].touched ) {
-                <span class="error" >
-                    Agregar una descripcion
-                </span>
-
-            }
-        
-            @if ( form.controls['description'].getError('minlength') && form.controls['description'].touched ) {
-                <span class="error" >
-                    La descripcion debe contener al menos 3 caracteres
-                </span>
-
-            }
-
-        
-            <mat-form-field class="example-full-width">
-                <mat-label>Precio</mat-label>
-                <input type="number" formControlName="price"  matInput placeholder="Ex. Sabritas">    
-            </mat-form-field>
+            <mat-card appearance="outlined" >
             
-            @if ( form.controls['price'].getError('required') && form.controls['price'].touched ) {
-                <span class="error" >
-                    Debe ingresar un precio de producto
-                </span>
-            }
-
-            @if ( form.controls['price'].getError('min') ) {
-                <span class="error" >
-                    El precio debe de ser mayor a 0
-                </span>
-            }
-        
-        
-            <mat-form-field class="example-full-width">
-                <mat-label>Stock</mat-label>
-                <input type="number" formControlName="stock"  matInput placeholder="Ex. Sabritas">
-            </mat-form-field>
-
-            @if ( form.controls['stock'].getError('required') && form.controls['stock'].touched ) {
-                <span class="error" >
-                    Debes ingresar el numero de productos
-                </span>
-            }
-
-            @if ( form.controls['stock'].getError('min') ) {
-                <span class="error" >
-                    El stock debe de ser mayor a 0
-                </span>
-            }
-        
-        </mat-card>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nombre</mat-label>
+                    <input formControlName="name"  matInput placeholder="Ex. Sabritas">
+                </mat-form-field>
     
+                @if (  form.controls['name'].hasError('required') && form.controls['name'].touched  ) {
     
-        <button mat-stroked-button  >Enviar</button>
+                    <span  class="error">
+                        Agregar un nombre
+                    </span>
+                } 
+    
+                @if (  form.controls['name'].getError('minlength') && form.controls['name'].touched  ) {
+    
+                    <span  class="error">
+                        El nombre debe contener al menos 3 caracteres
+                    </span>
+                } 
+    
+            
+                <mat-form-field class="example-full-width">
+                    <mat-label>Descripcion</mat-label>
+                    <input formControlName="description"  matInput placeholder="Ex. Sabritas">
+                </mat-form-field>
+            
+                @if ( form.controls['description'].getError('required') && form.controls['description'].touched ) {
+                    <span class="error" >
+                        Agregar una descripcion
+                    </span>
+    
+                }
+            
+                @if ( form.controls['description'].getError('minlength') && form.controls['description'].touched ) {
+                    <span class="error" >
+                        La descripcion debe contener al menos 3 caracteres
+                    </span>
+    
+                }
+    
+            
+                <mat-form-field class="example-full-width">
+                    <mat-label>Precio</mat-label>
+                    <input type="number" formControlName="price"  matInput placeholder="Ex. Sabritas">    
+                </mat-form-field>
+                
+                @if ( form.controls['price'].getError('required') && form.controls['price'].touched ) {
+                    <span class="error" >
+                        Debe ingresar un precio de producto
+                    </span>
+                }
+    
+                @if ( form.controls['price'].getError('min') ) {
+                    <span class="error" >
+                        El precio debe de ser mayor a 0
+                    </span>
+                }
+            
+            
+                <mat-form-field class="example-full-width">
+                    <mat-label>Stock</mat-label>
+                    <input type="number" formControlName="stock"  matInput placeholder="Ex. Sabritas">
+                </mat-form-field>
+    
+                @if ( form.controls['stock'].getError('required') && form.controls['stock'].touched ) {
+                    <span class="error" >
+                        Debes ingresar el numero de productos
+                    </span>
+                }
+    
+                @if ( form.controls['stock'].getError('min') ) {
+                    <span class="error" >
+                        El stock debe de ser mayor a 0
+                    </span>
+                }
+            
+            </mat-card>
+        
+        
+            
+            <button [disabled]="form.invalid"  mat-stroked-button  >Enviar</button>
+        }
+
+        
         
     </form>    
 </div>

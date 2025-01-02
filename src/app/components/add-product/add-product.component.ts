@@ -9,11 +9,12 @@ import {MatButtonModule} from '@angular/material/button';
 import { ProductService } from '../../services/product.service';
 import { EnviarProducto, Product } from '../../interface/product';
 import { ActivatedRoute, Router } from '@angular/router';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-add-product',
   imports: [MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule,
-    MatDividerModule, MatIconModule, ReactiveFormsModule
+    MatDividerModule, MatIconModule, ReactiveFormsModule, MatProgressSpinnerModule
     
   ],
   templateUrl: './add-product.component.html',
@@ -25,6 +26,7 @@ export class AddProductComponent {
   producto: Product = { name: "", description:"",price:0, stock:0 };
   title: string = "Agregar"
   id: number;
+  loader: boolean = false;
 
   constructor( private productService: ProductService, 
     private fb:FormBuilder,
@@ -65,11 +67,14 @@ export class AddProductComponent {
     this.producto.price = this.form.value.price
     this.producto.stock = this.form.value.stock
 
+    this.loader = true
 
     if (this.id === 0) {
       this.productService.addProduct( this.producto ).subscribe(()=>{
         console.log("producto agregado")
         this.router.navigate([''])
+        this.loader = false
+
       })  
       
     } else {
@@ -77,6 +82,8 @@ export class AddProductComponent {
       console.log(this.id)
       this.productService.updateProduct( this.id, this.producto ).subscribe(()=>{
         console.log("producto updateado")
+        this.loader = false
+
         this.router.navigate([''])
       }) 
     }

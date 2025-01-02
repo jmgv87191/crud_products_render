@@ -7,11 +7,12 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../interface/product';
 import { RouterLink } from '@angular/router';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-product-list',
   imports: [MatButtonModule, MatDividerModule, MatIconModule, MatTableModule, MatPaginatorModule,
-    RouterLink
+    RouterLink, MatProgressSpinnerModule
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css'
@@ -26,6 +27,7 @@ export class ProductListComponent implements OnInit,AfterViewInit  {
 
   displayedColumns: string[] = ['name', 'description', 'price', 'stock', 'delete', 'edit'];
   dataSource = new MatTableDataSource<Product>([]);
+  loader: boolean = true
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -39,21 +41,33 @@ export class ProductListComponent implements OnInit,AfterViewInit  {
 
   ngOnInit(): void {
     this.getProducts()
+    this.loader = true;
+
     this.producService.getProducts().subscribe((data)=>{
       this.dataTable = data
+      this.loader= false
+
     })
     console.log(this.dataTable)
   }
 
   getProducts() {
+
+    this.loader = true;
+
     this.producService.getProducts().subscribe((data) => {
       this.dataSource.data = data; 
+      this.loader= false
     });
   }
 
   delete( id:number ){
+
+    this.loader = true;
+
     this.producService.deleteProduct(id).subscribe(()=>{
       this.getProducts()
+      this.loader= false
     })
   }
   
